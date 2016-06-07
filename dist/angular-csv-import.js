@@ -84,7 +84,7 @@ csvImport.directive('ngCsvImport', function() {
         var columnCount = lines[0].split(content.separator).length;
 
         if (content.header) {
-          result.columns = lines[0].split(content.separator);
+          result.columns = lines[0].split(content.separator).map(function(s){ return s.trim();});
           start = 1;
         }
 
@@ -94,14 +94,14 @@ csvImport.directive('ngCsvImport', function() {
           if (currentline.length === columnCount) {
             if (content.header) {
               for (var j = 0; j < result.columns.length; j++) {
-                obj[result.columns[j]] = currentline[j];
+                obj[result.columns[j]] = currentline[j].trim();
               }
             } else {
               for (var k = 0; k < currentline.length; k++) {
-                obj[k] = currentline[k];
+                obj[k] = currentline[k].trim();
               }
             }
-            result.push(obj);
+            result.rows.push(obj);
           }
         }
         return result;
