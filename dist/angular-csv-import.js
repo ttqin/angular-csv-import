@@ -1,3 +1,5 @@
+/*! angular-csv-import - v0.0.33 - 2016-06-13
+* Copyright (c) 2016 ; Licensed  */
 'use strict';
 
 var csvImport = angular.module('ngCsvImport', []);
@@ -16,7 +18,8 @@ csvImport.directive('ngCsvImport', function() {
       result: '=?',
       encoding: '=?',
       encodingVisible: '=?',
-      accept: '=?'
+      accept: '=?',
+      onUpload: '=?'
     },
     template: '<div>' +
       '<div ng-show="headerVisible"><div class="label">Header</div><input type="checkbox" ng-model="header"></div>' +
@@ -70,6 +73,9 @@ csvImport.directive('ngCsvImport', function() {
               separator: scope.separator
             };
             scope.result = csvToJSON(content);
+            if (scope.onUpload) {
+              scope.onUpload();
+            }
           }
         }
       });
