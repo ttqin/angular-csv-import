@@ -61,6 +61,9 @@ csvImport.directive('ngCsvImport', function() {
             scope.result = csvToJSON(content);
             scope.result.filename = scope.filename;
           });
+          if (scope.onUpload) {
+            scope.onUpload();
+          }
         };
 
         if ((onChangeEvent.target.type === "file") && (onChangeEvent.target.files != null || onChangeEvent.srcElement.files != null)) {
@@ -73,9 +76,6 @@ csvImport.directive('ngCsvImport', function() {
               separator: scope.separator
             };
             scope.result = csvToJSON(content);
-            if (scope.onUpload) {
-              scope.onUpload();
-            }
           }
         }
       });
