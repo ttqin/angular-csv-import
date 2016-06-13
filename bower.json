@@ -1,6 +1,6 @@
 {
     "name": "angular-csv-import-tmp",
-    "version": "0.0.31",
+    "version": "0.0.33",
     "main": "dist/angular-csv-import.js",
     "license": "MIT",
     "authors": [
@@ -30,4 +30,3 @@
     "devDependencies": {
     }
 }
-
